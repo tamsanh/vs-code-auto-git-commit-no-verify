@@ -1,7 +1,7 @@
 {
-  "name": "autogitcommit",
-  "displayName": "Auto Git Commit",
-  "description": "Automatically commit and push changes to Git on file save",
+  "name": "autogitcommitnoverify",
+  "displayName": "Auto Git Commit No Verify",
+  "description": "Automatically commit and push changes to Git on file save without verification",
   "version": "0.0.1",
   "publisher": "your-publisher-name",
   "engines": {
@@ -11,45 +11,45 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:autogitcommit.enable",
-    "onCommand:autogitcommit.disable",
+    "onCommand:autogitcommitnoverify.enable",
+    "onCommand:autogitcommitnoverify.disable",
     "onSaveTextDocument"
   ],
   "main": "./out/extension.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yogesh-valiya/vs-code-auto-git-commit.git"
+    "url": "https://github.com/tamsanh/vs-code-auto-git-commit-no-verify"
   },
   "contributes": {
     "commands": [
       {
-        "command": "autogitcommit.enable",
-        "title": "Enable Auto Git Commit"
+        "command": "autogitcommitnoverify.enable",
+        "title": "Enable Auto Git Commit with No Verify"
       },
       {
-        "command": "autogitcommit.disable",
-        "title": "Disable Auto Git Commit"
+        "command": "autogitcommitnoverify.disable",
+        "title": "Disable Auto Git Commit with No Verify"
       }
     ],
     "configuration": {
       "type": "object",
       "properties": {
-        "autogitcommit.enable": {
+        "autogitcommitnoverify.enable": {
           "type": "boolean",
           "default": false,
-          "description": "Enable/Disable Auto Git Commit"
+          "description": "Enable/Disable Auto Git Commit with No Verify"
         },
-        "autogitcommit.push": {
+        "autogitcommitnoverify.push": {
           "type": "boolean",
           "default": true,
           "description": "Automatically push after commit"
         },
-        "autogitcommit.commitMessage": {
+        "autogitcommitnoverify.commitMessage": {
           "type": "string",
           "default": "Auto commit",
           "description": "Default commit message"
         },
-        "autogitcommit.branch": {
+        "autogitcommitnoverify.branch": {
           "type": "string",
           "default": "main",
           "description": "Branch to push changes"
