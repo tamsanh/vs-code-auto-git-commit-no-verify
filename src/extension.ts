@@ -38,7 +38,7 @@ async function autoCommitAndPush(document: vscode.TextDocument) {
       return;
     }
 
-    exec(`git commit -m "${config.commitMessage}"`, { cwd: workspacePath }, (err) => {
+    exec(`git commit -n -m "${config.commitMessage}"`, { cwd: workspacePath }, (err) => {
       if (err) {
         vscode.window.showErrorMessage(`Git commit failed: ${err.message}`);
         return;
