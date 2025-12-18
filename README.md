@@ -10,10 +10,10 @@ This VS Code extension automatically commits and pushes changes to a Git reposit
 
 ## Configuration
 
-- `autogitcommit.enable`: Enable/Disable Auto Git Commit
-- `autogitcommit.push`: Automatically push after commit
-- `autogitcommit.commitMessage`: Default commit message
-- `autogitcommit.branch`: Branch to push changes
+- `autogitcommitnoverify.enable`: Enable/Disable Auto Git Commit
+- `autogitcommitnoverify.push`: Automatically push after commit
+- `autogitcommitnoverify.commitMessage`: Default commit message
+- `autogitcommitnoverify.branch`: Branch to push changes
 
 ## Commands
 

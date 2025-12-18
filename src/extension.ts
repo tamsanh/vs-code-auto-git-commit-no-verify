@@ -1,18 +1,18 @@
-import * as vscode from 'vscode';
-import { exec } from 'child_process';
-import { getConfig } from './config';
+import * as vscode from "vscode";
+import { exec } from "child_process";
+import { getConfig } from "./config";
 
 let isEnabled = false;
 
 export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
-    vscode.commands.registerCommand('autogitcommit.enable', () => {
+    vscode.commands.registerCommand("autogitcommitnoverify.enable", () => {
       isEnabled = true;
-      vscode.window.showInformationMessage('Auto Git Commit enabled');
+      vscode.window.showInformationMessage("Auto Git Commit enabled");
     }),
-    vscode.commands.registerCommand('autogitcommit.disable', () => {
+    vscode.commands.registerCommand("autogitcommitnoverify.disable", () => {
       isEnabled = false;
-      vscode.window.showInformationMessage('Auto Git Commit disabled');
+      vscode.window.showInformationMessage("Auto Git Commit disabled");
     }),
     vscode.workspace.onDidSaveTextDocument((document) => {
       if (isEnabled) {
@@ -38,24 +38,38 @@ async function autoCommitAndPush(document: vscode.TextDocument) {
       return;
     }
 
-    exec(`git commit -n -m "${config.commitMessage}"`, { cwd: workspacePath }, (err) => {
-      if (err) {
-        vscode.window.showErrorMessage(`Git commit failed: ${err.message}`);
-        return;
-      }
+    exec(
+      `git commit -n -m "${config.commitMessage}"`,
+      { cwd: workspacePath },
+      (err) => {
+        if (err) {
+          vscode.window.showErrorMessage(`Git commit failed: ${err.message}`);
+          return;
+        }
 
-      if (config.push) {
-        exec(`git push origin ${config.branch}`, { cwd: workspacePath }, (err) => {
-          if (err) {
-            vscode.window.showErrorMessage(`Git push failed: ${err.message}`);
-          } else {
-            vscode.window.showInformationMessage('Changes committed and pushed successfully');
-          }
-        });
-      } else {
-        vscode.window.showInformationMessage('Changes committed successfully');
+        if (config.push) {
+          exec(
+            `git push origin ${config.branch}`,
+            { cwd: workspacePath },
+            (err) => {
+              if (err) {
+                vscode.window.showErrorMessage(
+                  `Git push failed: ${err.message}`
+                );
+              } else {
+                vscode.window.showInformationMessage(
+                  "Changes committed and pushed successfully"
+                );
+              }
+            }
+          );
+        } else {
+          vscode.window.showInformationMessage(
+            "Changes committed successfully"
+          );
+        }
       }
-    });
+    );
   });
 }
 
